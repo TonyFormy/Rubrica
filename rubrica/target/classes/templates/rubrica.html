@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/%22%3E">
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<style>
+.ktm:hover{
+background-color:black;
+color:white;
+}
+</style>
+<meta charset="UTF-8">
+<title>Rubrica</title>
+</head>
+<body>
+<center>
+<h1>RUBRICA</h1>
+<table class="table">
+<tr>
+ <thead class="table-dark">
+
+<th>Nome</th>
+<th>Cognome</th>
+<th>Telefono</th>
+<th></th>
+</thead>
+</tr>
+
+<tr class="ktm" th:each= "contatto : ${contatti}">
+	<form action='eliminacontatto' method='post'>
+	<td><input name="firstName" th:value= "${contatto.firstName}" type="hidden" th:text= "${contatto.firstName}"></td>
+	<td><input name="lastName" th:value= "${contatto.lastName}"type="hidden" th:text= "${contatto.lastName}"></td>
+	<td><input name="id" th:value= "${contatto.id}" type="hidden" th:text= "${contatto.id}"></td>
+	 <td><button type='submit' name='elimina' class='btn btn-outline-danger'>ELIMINA</button></td>
+	 </form>
+</tr>
+<tr class="ktm" >
+	<form method="POST" action="aggiungicontatto">
+	<td><input type="text" name="firstName"  placeholder= "inserisci nome"></td>
+	<td><input type="text" name="lastName"  placeholder= "inserisci cognome"></td>
+	<td><input type="text" name="id"  placeholder= "inserisci numero di telefono"></td>
+	<td><button type="submit" name="aggiungi" class="btn btn-outline-success">AGGIUNGI</button></td>
+	</form>
+</tr>
+</table>
+</center>
+</body>
+</html>
